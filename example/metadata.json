@@ -1,7 +1,7 @@
 {
     "name": "Firecrawl",
-    "icon": "https://firecrawl.dev/favicon.ico",
     "description": "Firecrawl is a tool that allows you to crawl websites.",
+    "icon": "https://firecrawl.dev/favicon.ico",
     "requirements": ["firecrawl-py==2.7.1", "pydantic==2.10.6"],
     "inputs": [
         {

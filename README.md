@@ -1,54 +1,149 @@
-# RELEVANCE CONNECT
+# Relevance Connect
+
 Open connector to add integrations to Relevance AI.
 
-## Create a new integration
-1. Install the Relevance Connect CLI: `pip install relevance_connect`
-2. Create a folder for the integration.
-3. Create a single `metadata.json` file. This is a JSON file that contains the metadata for the integration.
+## Getting Started
+
+### Prerequisites
+
+Install the Relevance Connect CLI:
+
+```bash
+pip install relevance_connect
+```
+
+Login to your Relevance AI account:
+```bash
+relevance-connect login
+```
+
+## Creating a New Integration
+
+Checkout the [example](example) for a complete example.
+
+Follow these steps to create and submit a new integration:
+
+### 1. Set Up Your Integration Folder
+
+Create a new folder for your integration and navigate to it.
+
+### 2. Create the Metadata File
+
+Create a `metadata.json` file that defines your integration's configuration:
+
 ```json
 {
-    "name": "Firecrawl", // Name of the integration
-    "description": "Firecrawl is a tool that allows  you to run firecrawl.", // Description of the integration
+    "name": "Firecrawl",
+    "description": "Firecrawl is a tool that allows you to run firecrawl.",
     "inputs": [
         {
             "input_name": "website_url",
             "type": "string",
             "title": "Website URL",
             "description": "The URL of the website to crawl.",
-            "default": "https://www.firecrawl.dev",
-            "required": true
+            "default": "https://www.firecrawl.dev"
         },
         {
             "input_name": "firecrawl",
             "type": "string",
             "title": "Firecrawl API Key",
             "description": "The API key for firecrawl.",
-            "required": true
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
         }
-    ], // Inputs of the integration
-    "requirements": ["firecrawl"], // Optional: Requirements of the integration
-    "long_output_mode": true, // Optional: If your code returns a long output, greater than 10 million characters, set this to true.
-    "timeout": 300 // Optional: Timeout of the integration in seconds. Default is 300 seconds.
+    ],
+    "required": ["website_url", "firecrawl"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
 }
 ```
-4. Create a `main.py` file. This has to be a single file.
-- It requires a return statement at the end of the file.
-- You can refer to any of the inputs created in the `inputs.py` file via accessing the `params` dictionary. e.g. `params["website_url"]`
-- Any api key inputs are stored in a naming convention of `{{secrets.chains_XXX}}` so e.g. `{{secrets.chains_firecrawl}}`
+
+#### Metadata Fields
+
+- **name**: Name of the integration
+- **description**: Description of what the integration does
+- **inputs**: Array of input configurations for the integration
+- **required**: Array of required input field names
+- **requirements**: *(Optional)* Python packages required by the integration
+- **icon**: *(Optional)* URL to an icon for the integration
+- **long_output_mode**: *(Optional)* Set to `true` if your code returns output greater than 10 million characters
+- **timeout**: *(Optional)* Timeout in seconds (default: 300)
+
+📖 **For detailed information about all available input types and their schemas, see [INPUTS.md](INPUTS.md).**
+
+### 3. Create the Main Script
+
+Create a `main.py` file containing your integration logic:
+
 ```python
 from firecrawl import FirecrawlApp
+
+# Initialize the FirecrawlApp with API key from secrets
 app = FirecrawlApp(api_key="{{secrets.chains_firecrawl}}")
 
+# Use the website URL from the params
 scrape_status = app.scrape_url(params['website_url'])
 
-return scrape_status
+# Return the scraped content
+return scrape_status.markdown
 ```
-5. Test it:
-- create a `inputs.json` file. This is a JSON file that contains the inputs for the integration.
+
+#### Important Notes
+
+- **Single file only**: The entire integration must be in one `main.py` file
+- **Return statement required**: Your script must end with a `return` statement
+- **Access inputs**: Use the `params` dictionary to access inputs (e.g., `params["website_url"]`)
+- **API keys**: Reference API key inputs using the pattern `{{secrets.chains_XXX}}` where `XXX` is the input name
+
+### 4. Test Your Integration
+
+#### Create Test Inputs
+
+Create an `inputs.json` file with test data:
+
 ```json
 {
-    "firecrawl": "firecrawl"
+    "website_url": "https://www.example.com",
+    "firecrawl": "your-test-api-key"
 }
 ```
-- run `relevance_connect main.py metadata.json --inputs inputs.json` in the folder of the integration.
-6. Submit it!
+
+#### Run the Test
+
+Execute your integration locally:
+
+```bash
+relevance-connect run
+```
+
+#### [Optional] Save the Integration
+
+If you want to save the integration to your Relevance AI account, you can do so with the following command:
+
+```bash
+relevance-connect save
+```
+
+### 5. Submit Your Integration
+
+Once your integration is working correctly, submit it to Relevance AI!
+
+
+## Other Commands
+
+### Logout
+
+```bash
+relevance-connect logout
+```
+
+### Run javascript integration
+Javascript is also supported. For javascript, packages are not supported. Checkout the [js_example](js_example) for an example.
+
+```bash
+relevance-connect run-js
+```
