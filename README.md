@@ -12,6 +12,11 @@ Install the Relevance Connect CLI:
 pip install relevance_connect
 ```
 
+For local development, you can install the package from the source:
+```bash
+pip install -e .
+```
+
 Login to your Relevance AI account:
 ```bash
 relevance-connect login
