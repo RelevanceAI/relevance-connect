@@ -51,7 +51,7 @@ def login(
         )
         if not api_key:
             api_key = os.getenv("RELEVANCE_API_KEY") or getpass.getpass(
-                "Paste the API key from your profile and hit enter: "
+                "Paste the API key from your profile and hit enter (input will be hidden): "
             )
 
         if not region:
@@ -72,3 +72,19 @@ def login(
             json.dump(cred_json, f)
         os.chmod(cred_path, 0o600)
     print("Successfully logged in, welcome!")
+
+
+def logout():
+    """
+    Logout from Relevance AI by removing stored credentials.
+    """
+    cred_path = os.path.expanduser("~/relevanceai.json")
+    
+    if os.path.exists(cred_path):
+        try:
+            os.remove(cred_path)
+            print("Successfully logged out from Relevance AI.")
+        except Exception as e:
+            print(f"Error removing credentials file: {e}")
+    else:
+        print("No credentials found. You are not logged in.")

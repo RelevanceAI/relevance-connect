@@ -1,4 +1,4 @@
-# CLI tool to run & test relevance_connect 
+# CLI tool to save relevance_connect integrations
 
 import argparse
 import json
@@ -13,21 +13,22 @@ def read_json_to_dict(file_path):
         return json.load(file)
 
 def main():
-    parser = argparse.ArgumentParser(description='Run a Relevance Connect integration')
+    parser = argparse.ArgumentParser(description='Save a Relevance Connect integration')
     parser.add_argument('-m', '--main', help='Path to the main.py file containing the integration code. defaults to main.py. Note: for submission it will need to be main.py', default='main.py')
     parser.add_argument('-mt', '--metadata', help='Path to the metadata.json file containing the integration metadata. defaults to metadata.json. Note: for submission it will need to be metadata.json', default='metadata.json')
-    parser.add_argument('-i', '--inputs', help='Path to the inputs.json file containing the test inputs. defaults to inputs.json.', default='inputs.json')
+    parser.add_argument('-id', '--id', help='Optional ID for the integration. If not provided, a random UUID will be generated.', default=None)
 
     args = parser.parse_args()
-    inputs = read_json_to_dict(args.inputs)
     code = read_file_to_string(args.main)
     metadata = read_json_to_dict(args.metadata)    
 
-    # Create a temporary RelevanceCode instance to run the code
+    # Create a RelevanceCode instance to save the code
     requirements = [] if "requirements" not in metadata else metadata["requirements"]
     long_output_mode = False if "long_output_mode" not in metadata else metadata["long_output_mode"]
     timeout = 300 if "timeout" not in metadata else metadata["timeout"]
     required = [] if "required" not in metadata else metadata["required"]
+    inputs = [] if "inputs" not in metadata else metadata["inputs"]
+    icon = None if "icon" not in metadata else metadata["icon"]
 
     integration = RelevanceCode(
         code=code,
@@ -35,13 +36,16 @@ def main():
         requirements=requirements,
         required=required,
         description=metadata["description"],
+        inputs=inputs,
         long_output_mode=long_output_mode,
-        timeout=timeout
+        timeout=timeout,
+        id=args.id,
+        icon=icon
     )
     
-    # Run the integration with the provided inputs
-    result = integration.run(inputs=inputs)
-    print(json.dumps(result, indent=4))
+    # Save the integration
+    saved_id = integration.save()
+    print(f"Integration saved successfully with ID: {saved_id}")
 
 if __name__ == "__main__":
     main()

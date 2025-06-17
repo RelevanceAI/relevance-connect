@@ -1,5 +1,5 @@
 import requests
-from relevance_connect.core.auth import Auth
+from relevance_connect.core.auth import Auth, config
 
 def handle_response(response):
     try:
@@ -12,13 +12,15 @@ class RelevanceCode:
         self,
         code: str,
         name: str,
-        requirements: list[str],
+        requirements: list[str] = [],
+        required: list[str] = [],
         description: str = "",
         inputs={},
         code_type: str = "python",
         long_output_mode: bool = False,
         timeout: int = 300,
         id: str = None,
+        icon: str = None,
         auth: Auth = None,
     ):
         """
@@ -43,23 +45,51 @@ class RelevanceCode:
         self.code_type = code_type
         self.long_output_mode = long_output_mode
         self.timeout = timeout
+        self.requirements = requirements
+        self.required = required
+        self.icon = icon
         self.auth: Auth = config.auth if auth is None else auth
+        self.steps.append(
+            self._add_code_step(code, requirements, code_type, long_output_mode, timeout)
+        )
 
-    def _add_steps(self):
+    def _add_code_step(self, code: str, requirements: list[str] = [], code_type: str = "python", long_output_mode: bool = False, timeout: int = 300):
         if code_type == "python":
             step_json = {
                 "transformation": "python_code_transformation",
-                "name": self.name,
+                "name": "code_block",
                 "params": {
-                    "code": self.code,
-                    "packages": self.requirements,
+                    "code": code,
+                    "packages": requirements,
                 }
             }
-            if self.long_output_mode:
-                step_json["params"]["long_output_mode"] = self.long_output_mode
-            if self.timeout:
-                step_json["params"]["timeout"] = self.timeout
-            self.steps.append(step_json)
+            if long_output_mode:
+                step_json["params"]["long_output_mode"] = long_output_mode
+            if timeout:
+                step_json["params"]["timeout"] = timeout
+            return step_json
+        elif code_type == "javascript":
+            step_json = {
+                "transformation": "javascript_code_transformation",
+                "name": "code_block",
+                "params": {
+                    "code": code,
+                }
+            }
+            return step_json
+
+    def _state_mapping(self):
+        state_mapping = {}
+        for inp in self._inputs:
+            state_mapping[inp['input_name']] = f"params.{inp['input_name']}"
+        for step in self.steps:
+            state_mapping[step['name']] = f"steps.{step['name']}.output"
+        return state_mapping
+
+    def _params_schema(self):
+        return {
+            "properties": { inp['input_name'] : {k: v for k, v in inp.items() if k != 'input_name'} for inp in self._inputs }
+        }
 
     def _trigger_json(
         self, values: dict = {}, return_state: bool = True, public: bool = False
@@ -68,11 +98,13 @@ class RelevanceCode:
             "return_state": return_state,
             "studio_override": {
                 "public": public,
+                "state_mapping" : self._state_mapping(),
+                "params_schema": self._params_schema(),
                 "transformations": {
-                    "steps": self._transform_steps(self.steps)
-                },
-                "params_schema": {
-                    "properties": self._inputs
+                    "steps": self.steps,
+                    "output": {
+                        "results": "{{code_block.transformed}}"
+                    }
                 },
             },
             "params": values,
@@ -81,6 +113,7 @@ class RelevanceCode:
         data["studio_override"]["studio_id"] = self.id
         return data
 
+
     def tool_json(self):
         data = {
             "title": self.name,
@@ -88,16 +121,17 @@ class RelevanceCode:
             "version": "latest",
             "project": self.auth.project,
             "public": False,
-            "state_mapping" : {
-                "text" : "params.text"
-            },
-            "params_schema": {
-                "properties": self._inputs
-            },
+            "state_mapping" : self._state_mapping(),
+            "params_schema": self._params_schema(),
             "transformations": {
-                "steps": self._transform_steps(self.steps)
+                "steps": self.steps,
+                "output": {
+                    "results": "{{code_block.transformed}}"
+                }
             },
         }
+        if self.icon:
+            data["emoji"] = self.icon
         data["studio_id"] = self.id
         return data
 
@@ -119,11 +153,14 @@ class RelevanceCode:
 
     def save(self):
         url = f"{self.auth.url}/latest/studios"
+        print(self.tool_json())
+        print(self.icon)
         response = requests.post(
             f"{url}/bulk_update",
             json={"updates": [self.tool_json()]},
             headers=self.auth.headers,
         )
         res = handle_response(response)
+        print(res)
         print("Tool deployed successfully to id ", self.id)
         return self.id
