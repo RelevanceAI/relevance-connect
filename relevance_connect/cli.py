@@ -6,6 +6,7 @@ import argparse
 import sys
 from relevance_connect.login import main as login_main
 from relevance_connect.run import main as run_main
+from relevance_connect.run_js import main as run_js_main
 from relevance_connect.logout import main as logout_main
 from relevance_connect.save import main as save_main
 
@@ -59,6 +60,27 @@ def main():
     # Logout subcommand
     logout_parser = subparsers.add_parser('logout', help='Logout from Relevance AI')
     
+    # Run-js subcommand
+    run_js_parser = subparsers.add_parser('run-js', help='Run a JavaScript relevance_connect integration')
+    run_js_parser.add_argument(
+        '-m', '--main', 
+        type=str, 
+        help='Path to main.js file', 
+        default='main.js'
+    )
+    run_js_parser.add_argument(
+        '-mt', '--metadata', 
+        type=str, 
+        help='Path to metadata.json file', 
+        default='metadata.json'
+    )
+    run_js_parser.add_argument(
+        '-i', '--inputs', 
+        type=str, 
+        help='Path to inputs.json file', 
+        default='inputs.json'
+    )
+    
     # Save subcommand
     save_parser = subparsers.add_parser('save', help='Save a relevance_connect integration')
     save_parser.add_argument(
@@ -94,6 +116,10 @@ def main():
         # Call run with the appropriate arguments
         sys.argv = ['run', '-m', args.main, '-mt', args.metadata, '-i', args.inputs]
         run_main()
+    elif args.command == 'run-js':
+        # Call run-js with the appropriate arguments
+        sys.argv = ['run-js', '-m', args.main, '-mt', args.metadata, '-i', args.inputs]
+        run_js_main()
     elif args.command == 'logout':
         # Call logout
         sys.argv = ['logout']

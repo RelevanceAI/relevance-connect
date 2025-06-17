@@ -70,7 +70,7 @@ class RelevanceCode:
             return step_json
         elif code_type == "javascript":
             step_json = {
-                "transformation": "javascript_code_transformation",
+                "transformation": "js_code_transformation",
                 "name": "code_block",
                 "params": {
                     "code": code,

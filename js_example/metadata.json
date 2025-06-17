@@ -1,0 +1,16 @@
+{
+    "name": "Hello World",
+    "icon": "🌍",
+    "description": "A simple hello world tool",
+    "requirements": [],
+    "inputs": [
+        {
+            "input_name": "name",
+            "type": "string",
+            "title": "Name",
+            "description": "The name to say hello to.",
+            "default": "World"
+        }
+    ],
+    "required": ["name"]
+}
