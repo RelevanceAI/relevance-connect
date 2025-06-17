@@ -1,0 +1,21 @@
+{
+    "name": "Firecrawl",
+    "description": "Firecrawl is a tool that allows you to crawl websites.",
+    "inputs": [
+        {
+            "input_name": "website_url",
+            "type": "string",
+            "title": "Website URL",
+            "description": "The URL of the website to crawl.",
+            "default": "https://www.firecrawl.dev",
+            "required": true
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "required": true
+        }
+    ]
+}
