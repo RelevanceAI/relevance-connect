@@ -118,7 +118,7 @@
             "default": false
         },
         {
-            "input_name": "exa_api_key",
+            "input_name": "exa",
             "type": "string",
             "title": "Exa API Key",
             "description": "Your Exa API key for authentication.",
@@ -128,5 +128,5 @@
             }
         }
     ],
-    "required": ["query", "exa_api_key"]
+    "required": ["query", "exa"]
 }

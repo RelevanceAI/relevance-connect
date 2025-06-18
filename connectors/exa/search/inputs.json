@@ -13,5 +13,5 @@
     "include_text_content": false,
     "include_highlights": true,
     "include_summary": true,
-    "exa_api_key": "your-exa-api-key-here"
+    "exa": "your-exa-api-key-here"
 }

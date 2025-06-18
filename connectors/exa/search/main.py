@@ -2,7 +2,7 @@ import requests
 import json
 
 # Get the API key from secrets
-api_key = "{{secrets.chains_exa_api_key}}"
+api_key = "{{secrets.chains_exa}}"
 
 # Set up the request
 url = "https://api.exa.ai/search"
