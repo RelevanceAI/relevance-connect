@@ -1,0 +1,9 @@
+{
+    "domain": "github.com",
+    "size": 256,
+    "format": "png",
+    "greyscale": false,
+    "fallback": "monogram",
+    "retina": true,
+    "logodev": "your-logodev-api-key-here"
+}

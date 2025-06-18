@@ -1,0 +1,63 @@
+{
+    "name": "Logo.dev Get Logo",
+    "description": "Get high-quality company logos by domain name using Logo.dev API.",
+    "icon": "https://logo.dev/api/image/logo.dev",
+    "requirements": [],
+    "inputs": [
+        {
+            "input_name": "domain",
+            "type": "string",
+            "title": "Domain",
+            "description": "The domain name to get the logo for (e.g., 'shopify.com').",
+            "default": "shopify.com"
+        },
+        {
+            "input_name": "size",
+            "type": "integer",
+            "title": "Size",
+            "description": "Logo size in pixels (recommended max 600px for raster images).",
+            "default": 128
+        },
+        {
+            "input_name": "format",
+            "type": "string",
+            "title": "Format",
+            "description": "Image format: 'jpg' or 'png'.",
+            "default": "jpg",
+            "enum": ["jpg", "png"]
+        },
+        {
+            "input_name": "greyscale",
+            "type": "boolean",
+            "title": "Greyscale",
+            "description": "Desaturate the logo to greyscale.",
+            "default": false
+        },
+        {
+            "input_name": "fallback",
+            "type": "string",
+            "title": "Fallback",
+            "description": "Fallback option when logo is not found.",
+            "default": "monogram",
+            "enum": ["monogram", "404"]
+        },
+        {
+            "input_name": "retina",
+            "type": "boolean",
+            "title": "Retina",
+            "description": "Return retina (2x) resolution image.",
+            "default": false
+        },
+        {
+            "input_name": "logodev",
+            "type": "string",
+            "title": "Logo.dev API Key",
+            "description": "Your Logo.dev API key for authentication.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["domain", "logodev"]
+}
