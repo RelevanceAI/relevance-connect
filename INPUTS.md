@@ -19,7 +19,8 @@ All inputs have the following fields:
 ```
 
 ## API Key Input
-This is a special type of input that is used to store API keys. It is not shown to the user. This requires the additional metadata field of `is_fixed_param` to be set to true and `content_type` to be set to `api_key`.
+This is a special type of input that is used to store API keys. It is not shown to the user and can only be entered in via https://app.relevanceai.com/login/sdk. Here is a video walkthrough: [Walkthrough](https://app.supademo.com/demo/cmc1fmr80jf9fsn1rw1xnjee6). 
+This requires the additional metadata field of `is_fixed_param` to be set to true and `content_type` to be set to `api_key`.
 ```json
 {
     "name": "api_key",

@@ -17,10 +17,11 @@ For local development, you can install the package from the source:
 pip install -e .
 ```
 
-Login to your Relevance AI account:
+Login to your Relevance AI account: [Walkthrough](https://app.supademo.com/demo/cmc1fdg1gjf3dsn1rjt31ki1r):
 ```bash
 relevance-connect login
 ```
+
 
 ## Creating a New Integration
 
