@@ -1,0 +1,132 @@
+{
+    "name": "Exa Search",
+    "description": "Exa is an AI-powered search API that delivers high-quality web search results with neural and keyword search capabilities.",
+    "icon": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/exa-color.png",
+    "requirements": [],
+    "inputs": [
+        {
+            "input_name": "query",
+            "type": "string",
+            "title": "Search Query",
+            "description": "The search prompt or query to search for.",
+            "default": "Latest developments in artificial intelligence"
+        },
+        {
+            "input_name": "num_results",
+            "type": "integer",
+            "title": "Number of Results",
+            "description": "Number of search results to return (max 100).",
+            "default": 10
+        },
+        {
+            "input_name": "search_type",
+            "type": "string",
+            "title": "Search Type",
+            "description": "Type of search: 'neural', 'keyword', or 'auto'.",
+            "default": "auto",
+            "enum": ["neural", "keyword", "auto"]
+        },
+        {
+            "input_name": "category",
+            "type": "string",
+            "title": "Category",
+            "description": "Category to focus the search on (e.g., 'research paper', 'news').",
+            "default": ""
+        },
+        {
+            "input_name": "include_domains",
+            "type": "array",
+            "title": "Include Domains",
+            "description": "List of domains to include in search results.",
+            "default": []
+        },
+        {
+            "input_name": "exclude_domains",
+            "type": "array",
+            "title": "Exclude Domains",
+            "description": "List of domains to exclude from search results.",
+            "default": []
+        },
+        {
+            "input_name": "start_crawl_date",
+            "type": "string",
+            "title": "Start Crawl Date",
+            "description": "Filter results by link discovery date (ISO 8601 format).",
+            "default": ""
+        },
+        {
+            "input_name": "end_crawl_date",
+            "type": "string",
+            "title": "End Crawl Date",
+            "description": "Filter results by link discovery date (ISO 8601 format).",
+            "default": ""
+        },
+        {
+            "input_name": "start_published_date",
+            "type": "string",
+            "title": "Start Published Date",
+            "description": "Filter results by content publication date (ISO 8601 format).",
+            "default": ""
+        },
+        {
+            "input_name": "end_published_date",
+            "type": "string",
+            "title": "End Published Date",
+            "description": "Filter results by content publication date (ISO 8601 format).",
+            "default": ""
+        },
+        {
+            "input_name": "include_text",
+            "type": "array",
+            "title": "Include Text",
+            "description": "List of text snippets that must appear in results.",
+            "default": []
+        },
+        {
+            "input_name": "exclude_text",
+            "type": "array",
+            "title": "Exclude Text",
+            "description": "List of text snippets to exclude from results.",
+            "default": []
+        },
+        {
+            "input_name": "include_contents",
+            "type": "boolean",
+            "title": "Include Contents",
+            "description": "Whether to retrieve content details for results.",
+            "default": false
+        },
+        {
+            "input_name": "include_text_content",
+            "type": "boolean",
+            "title": "Include Text Content",
+            "description": "Include full text content in results (requires include_contents).",
+            "default": false
+        },
+        {
+            "input_name": "include_highlights",
+            "type": "boolean",
+            "title": "Include Highlights",
+            "description": "Include text highlights in results (requires include_contents).",
+            "default": false
+        },
+        {
+            "input_name": "include_summary",
+            "type": "boolean",
+            "title": "Include Summary",
+            "description": "Include AI-generated summaries in results (requires include_contents).",
+            "default": false
+        },
+        {
+            "input_name": "exa_api_key",
+            "type": "string",
+            "title": "Exa API Key",
+            "description": "Your Exa API key for authentication.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["query", "exa_api_key"]
+}
