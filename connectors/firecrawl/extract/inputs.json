@@ -1,5 +1,6 @@
 {
-    "urls": ["https://example.com"],
+    "firecrawl": "your-test-api-key",
+    "urls": ["https://www.firecrawl.dev"],
     "prompt": "Extract data",
     "schema": {},
     "enable_web_search": false,

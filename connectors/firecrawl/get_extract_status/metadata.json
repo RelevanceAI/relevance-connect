@@ -1,0 +1,28 @@
+{
+    "name": "Firecrawl Get Extract Status",
+    "description": "Get the status of an extract.",
+    "inputs": [
+        {
+            "input_name": "extract_id",
+            "type": "string",
+            "title": "Extract ID",
+            "description": "The ID of the extract to get the status of.",
+            "default": ""
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["extract_id"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 
