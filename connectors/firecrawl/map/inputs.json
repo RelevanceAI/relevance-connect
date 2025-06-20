@@ -1,4 +1,5 @@
 {
+    "firecrawl": "your-test-api-key",
     "url": "https://www.firecrawl.dev",
     "search": "",
     "ignore_sitemap": true,

@@ -13,50 +13,10 @@ base_headers = {
 def remove_none_values(payload):
     return {k: v for k, v in payload.items() if v is not None}
 
-
-def crawl(params):
-    url = params.get("url")
-    exclude_paths = params.get("exclude_paths", None)
-    include_paths = params.get("include_paths", None)
-    max_depth = params.get("max_depth", 5)
-    max_discovery_depth = params.get("max_discovery_depth", 10)
-    ignore_sitemap = params.get("ignore_sitemap", False)
-    ignore_query_parameters = params.get("ignore_query_parameters", False)
-    limit = params.get("limit", 10)
-    allow_backward_links = params.get("allow_backward_links", False)
-    allow_external_links = params.get("allow_external_links", False)
-    delay = params.get("delay", 1000)
-    webhook = params.get("webhook", None)
-    scrape_options = params.get("scrape_options", None)
-
+def crawl(payload):
     endpoint = f"{base_url}/crawl"
-    payload = {
-        "url": url,
-        "excludePaths": exclude_paths,
-        "includePaths": include_paths,
-        "maxDepth": max_depth,
-        "maxDiscoveryDepth": max_discovery_depth,
-        "ignoreSitemap": ignore_sitemap,
-        "ignoreQueryParameters": ignore_query_parameters,
-        "limit": limit,
-        "allowBackwardLinks": allow_backward_links,
-        "allowExternalLinks": allow_external_links,
-        "delay": delay,
-        "webhook": webhook,
-        "scrapeOptions": scrape_options
-    }
     payload = remove_none_values(payload)
     response = requests.post(endpoint, headers=base_headers, json=payload)
-    return handle_response(response)
-
-def get_crawl_status(crawl_id):
-    endpoint = f"{base_url}/crawl/{crawl_id}"
-    response = requests.get(endpoint, headers=base_headers)
-    return handle_response(response)
-
-def cancel_crawl(crawl_id):
-    endpoint = f"{base_url}/crawl/{crawl_id}"
-    response = requests.delete(endpoint, headers=base_headers)
     return handle_response(response)
 
 def handle_response(response):
@@ -66,4 +26,49 @@ def handle_response(response):
         return {
             "error": f"API request failed with status code {response.status_code}",
             "message": response.text
-        } 
+        }
+
+# Build the request payload
+payload = {
+    "url": params["url"]
+}
+
+# Add optional parameters if provided
+if params.get("exclude_paths"):
+    payload['excludePaths'] = params.get("exclude_paths", None)
+
+if params.get("include_paths"):
+    payload['includePaths'] = params.get("include_paths", None)
+
+if params.get("max_depth"):
+    payload['maxDepth'] = params.get("max_depth", 5)
+
+if params.get("max_discovery_depth"):
+    payload['maxDiscoveryDepth'] = params.get("max_discovery_depth", 10)
+
+if params.get("ignore_sitemap"):
+    payload['ignoreSitemap'] = params.get("ignore_sitemap", False)
+
+if params.get("ignore_query_parameters"):
+    payload['ignoreQueryParameters'] = params.get("ignore_query_parameters", False)
+
+if params.get("limit"):
+    payload['limit'] = params.get("limit", 10)
+
+if params.get("allow_backward_links"):
+    payload['allowBackwardLinks'] = params.get("allow_backward_links", False)
+
+if params.get("allow_external_links"):
+    payload['allowExternalLinks'] = params.get("allow_external_links", False)
+
+if params.get("delay"):
+    payload['delay'] = params.get("delay", 1000)
+
+if params.get("webhook"):
+    payload['webhook'] = params.get("webhook", None)
+
+if params.get("scrape_options"):
+    payload['scrapeOptions'] = params.get("scrape_options", None)
+
+# Make the request
+return crawl(payload)

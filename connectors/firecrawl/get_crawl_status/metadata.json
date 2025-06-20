@@ -1,0 +1,28 @@
+{
+    "name": "Firecrawl Get Crawl Status",
+    "description": "Get the status of a crawl.",
+    "inputs": [
+        {
+            "input_name": "crawl_id",
+            "type": "string",
+            "title": "Crawl ID",
+            "description": "The ID of the crawl to get the status of.",
+            "default": ""
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["crawl_id"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 

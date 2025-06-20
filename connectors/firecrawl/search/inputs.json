@@ -1,9 +1,10 @@
 {
-    "query": "Example search query",
-    "limit": 100,
-    "tbs": "",
-    "location": "",
-    "timeout": 60000,
-    "ignore_invalid_urls": false,
-    "scrape_options": {}
-} 
+  "firecrawl": "your-test-api-key",
+  "query": "Who discovered the universe",
+  "limit": 5,
+  "tbs": "",
+  "location": "",
+  "timeout": 60000,
+  "ignore_invalid_urls": false,
+  "scrape_options": {}
+}

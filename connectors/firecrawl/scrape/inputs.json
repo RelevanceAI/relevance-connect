@@ -1,4 +1,5 @@
 {
+    "firecrawl": "your-test-api-key",
     "url": "https://example.com",
     "formats": ["markdown"],
     "only_main_content": true,

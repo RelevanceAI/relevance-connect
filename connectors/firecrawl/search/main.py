@@ -13,30 +13,11 @@ base_headers = {
 def remove_none_values(payload):
     return {k: v for k, v in payload.items() if v is not None}
 
-
-def search(params):
-    query = params.get("query")
-    limit = params.get("limit", 100)
-    tbs = params.get("tbs", None)
-    location = params.get("location", None)
-    timeout = params.get("timeout", 60000)
-    ignore_invalid_urls = params.get("ignore_invalid_urls", False)
-    scrape_options = params.get("scrape_options", None)
-
+def search(payload):
     endpoint = f"{base_url}/search"
-    payload = {
-        "query": query,
-        "limit": limit,
-        "tbs": tbs,
-        "location": location,
-        "timeout": timeout,
-        "ignoreInvalidURLs": ignore_invalid_urls,
-        "scrapeOptions": scrape_options
-    }
     payload = remove_none_values(payload)
     response = requests.post(endpoint, headers=base_headers, json=payload)
     return handle_response(response)
-
 
 def handle_response(response):
     if response.status_code == 200:
@@ -45,4 +26,31 @@ def handle_response(response):
         return {
             "error": f"API request failed with status code {response.status_code}",
             "message": response.text
-        } 
+        }
+
+# Build the request payload
+payload = {
+    "query": params['query'],
+}
+
+# Add optional parameters if provided
+if params.get('limit'):
+    payload['limit'] = params['limit']
+
+if params.get('tbs'):
+    payload['tbs'] = params['tbs']
+
+if params.get('location'):
+    payload['location'] = params['location']
+
+if params.get('timeout'):
+    payload['timeout'] = params['timeout']
+
+if params.get('ignore_invalid_urls'):
+    payload['ignore_invalid_urls'] = params['ignore_invalid_urls']
+
+if params.get('scrape_options'):
+    payload['scrape_options'] = params['scrape_options']
+
+# Make the request
+return search(payload)
