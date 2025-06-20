@@ -1,0 +1,11 @@
+{
+    "urls": ["https://example.com"],
+    "prompt": "Extract data",
+    "schema": {},
+    "enable_web_search": false,
+    "ignore_sitemap": false,
+    "include_subdomains": true,
+    "show_sources": false,
+    "scrape_options": {},
+    "ignore_invalid_urls": false
+} 

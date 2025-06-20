@@ -1,0 +1,161 @@
+{
+    "name": "Firecrawl Scrape",
+    "description": "Scrape functionality for Firecrawl.",
+    "inputs": [
+        {
+            "input_name": "url",
+            "type": "string",
+            "title": "URL",
+            "description": "The URL to scrape.",
+            "default": "https://example.com"
+        },
+        {
+            "input_name": "formats",
+            "type": "array",
+            "title": "Formats",
+            "description": "Output formats.",
+            "default": ["markdown"]
+        },
+        {
+            "input_name": "only_main_content",
+            "type": "boolean",
+            "title": "Only Main Content",
+            "description": "Whether to scrape only the main content.",
+            "default": true
+        },
+        {
+            "input_name": "include_tags",
+            "type": "array",
+            "title": "Include Tags",
+            "description": "Tags to include in the scrape.",
+            "default": []
+        },
+        {
+            "input_name": "exclude_tags",
+            "type": "array",
+            "title": "Exclude Tags",
+            "description": "Tags to exclude from the scrape.",
+            "default": []
+        },
+        {
+            "input_name": "max_age",
+            "type": "integer",
+            "title": "Max Age",
+            "description": "Maximum age of content to scrape.",
+            "default": 0
+        },
+        {
+            "input_name": "headers",
+            "type": "object",
+            "title": "Headers",
+            "description": "Custom headers for the request.",
+            "default": {}
+        },
+        {
+            "input_name": "wait_for",
+            "type": "integer",
+            "title": "Wait For",
+            "description": "Time to wait for elements to load.",
+            "default": 0
+        },
+        {
+            "input_name": "mobile",
+            "type": "boolean",
+            "title": "Mobile",
+            "description": "Whether to simulate a mobile device.",
+            "default": false
+        },
+        {
+            "input_name": "skip_tls_verification",
+            "type": "boolean",
+            "title": "Skip TLS Verification",
+            "description": "Whether to skip TLS verification.",
+            "default": false
+        },
+        {
+            "input_name": "timeout",
+            "type": "integer",
+            "title": "Timeout",
+            "description": "Request timeout in milliseconds.",
+            "default": 30000
+        },
+        {
+            "input_name": "parse_pdf",
+            "type": "boolean",
+            "title": "Parse PDF",
+            "description": "Whether to parse PDF content.",
+            "default": true
+        },
+        {
+            "input_name": "json_options",
+            "type": "object",
+            "title": "JSON Options",
+            "description": "Options for JSON parsing.",
+            "default": {}
+        },
+        {
+            "input_name": "actions",
+            "type": "array",
+            "title": "Actions",
+            "description": "Actions to perform during scraping.",
+            "default": []
+        },
+        {
+            "input_name": "location",
+            "type": "object",
+            "title": "Location",
+            "description": "Location settings for scraping.",
+            "default": {}
+        },
+        {
+            "input_name": "remove_base64_images",
+            "type": "boolean",
+            "title": "Remove Base64 Images",
+            "description": "Whether to remove base64 images.",
+            "default": true
+        },
+        {
+            "input_name": "block_ads",
+            "type": "boolean",
+            "title": "Block Ads",
+            "description": "Whether to block ads during scraping.",
+            "default": true
+        },
+        {
+            "input_name": "proxy",
+            "type": "string",
+            "title": "Proxy",
+            "description": "Proxy settings for the request.",
+            "default": "basic"
+        },
+        {
+            "input_name": "change_tracking_options",
+            "type": "object",
+            "title": "Change Tracking Options",
+            "description": "Options for change tracking.",
+            "default": {}
+        },
+        {
+            "input_name": "store_in_cache",
+            "type": "boolean",
+            "title": "Store in Cache",
+            "description": "Whether to store the result in cache.",
+            "default": true
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["url", "firecrawl"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 

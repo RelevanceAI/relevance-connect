@@ -1,0 +1,84 @@
+{
+    "name": "Firecrawl Extract",
+    "description": "Extract functionality for Firecrawl.",
+    "inputs": [
+        {
+            "input_name": "urls",
+            "type": "array",
+            "title": "URLs",
+            "description": "List of URLs to extract data from.",
+            "default": ["https://example.com"]
+        },
+        {
+            "input_name": "prompt",
+            "type": "string",
+            "title": "Prompt",
+            "description": "Prompt to guide the extraction process.",
+            "default": "Extract data"
+        },
+        {
+            "input_name": "schema",
+            "type": "object",
+            "title": "Schema",
+            "description": "Schema to define the structure of the extracted data.",
+            "default": {}
+        },
+        {
+            "input_name": "enable_web_search",
+            "type": "boolean",
+            "title": "Enable Web Search",
+            "description": "Whether to enable web search during extraction.",
+            "default": false
+        },
+        {
+            "input_name": "ignore_sitemap",
+            "type": "boolean",
+            "title": "Ignore Sitemap",
+            "description": "Whether to ignore the sitemap.",
+            "default": false
+        },
+        {
+            "input_name": "include_subdomains",
+            "type": "boolean",
+            "title": "Include Subdomains",
+            "description": "Whether to include subdomains in the extraction.",
+            "default": true
+        },
+        {
+            "input_name": "show_sources",
+            "type": "boolean",
+            "title": "Show Sources",
+            "description": "Whether to show sources in the extraction results.",
+            "default": false
+        },
+        {
+            "input_name": "scrape_options",
+            "type": "object",
+            "title": "Scrape Options",
+            "description": "Options for scraping content.",
+            "default": {}
+        },
+        {
+            "input_name": "ignore_invalid_urls",
+            "type": "boolean",
+            "title": "Ignore Invalid URLs",
+            "description": "Whether to ignore invalid URLs.",
+            "default": false
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["urls", "prompt"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 

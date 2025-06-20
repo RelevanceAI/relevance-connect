@@ -1,0 +1,15 @@
+{
+    "url": "https://www.firecrawl.dev",
+    "exclude_paths": [],
+    "include_paths": [],
+    "max_depth": 10,
+    "max_discovery_depth": 15,
+    "ignore_sitemap": false,
+    "ignore_query_parameters": false,
+    "limit": 10000,
+    "allow_backward_links": false,
+    "allow_external_links": false,
+    "delay": 1000,
+    "webhook": {},
+    "scrape_options": {}
+} 

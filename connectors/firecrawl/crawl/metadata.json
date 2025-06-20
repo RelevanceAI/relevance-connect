@@ -1,0 +1,112 @@
+{
+    "name": "Firecrawl Crawl",
+    "description": "Crawl functionality for Firecrawl.",
+    "inputs": [
+        {
+            "input_name": "url",
+            "type": "string",
+            "title": "URL",
+            "description": "The URL of the website to crawl.",
+            "default": "https://www.firecrawl.dev"
+        },
+        {
+            "input_name": "exclude_paths",
+            "type": "array",
+            "title": "Exclude Paths",
+            "description": "Paths to exclude from crawling.",
+            "default": []
+        },
+        {
+            "input_name": "include_paths",
+            "type": "array",
+            "title": "Include Paths",
+            "description": "Paths to include in crawling.",
+            "default": []
+        },
+        {
+            "input_name": "max_depth",
+            "type": "integer",
+            "title": "Max Depth",
+            "description": "Maximum depth to crawl.",
+            "default": 10
+        },
+        {
+            "input_name": "max_discovery_depth",
+            "type": "integer",
+            "title": "Max Discovery Depth",
+            "description": "Maximum discovery depth.",
+            "default": 15
+        },
+        {
+            "input_name": "ignore_sitemap",
+            "type": "boolean",
+            "title": "Ignore Sitemap",
+            "description": "Whether to ignore the sitemap.",
+            "default": false
+        },
+        {
+            "input_name": "ignore_query_parameters",
+            "type": "boolean",
+            "title": "Ignore Query Parameters",
+            "description": "Whether to ignore query parameters.",
+            "default": false
+        },
+        {
+            "input_name": "limit",
+            "type": "integer",
+            "title": "Limit",
+            "description": "Limit the number of pages to crawl.",
+            "default": 10000
+        },
+        {
+            "input_name": "allow_backward_links",
+            "type": "boolean",
+            "title": "Allow Backward Links",
+            "description": "Whether to allow backward links.",
+            "default": false
+        },
+        {
+            "input_name": "allow_external_links",
+            "type": "boolean",
+            "title": "Allow External Links",
+            "description": "Whether to allow external links.",
+            "default": false
+        },
+        {
+            "input_name": "delay",
+            "type": "integer",
+            "title": "Delay",
+            "description": "Delay between requests in milliseconds.",
+            "default": 1000
+        },
+        {
+            "input_name": "webhook",
+            "type": "object",
+            "title": "Webhook",
+            "description": "Webhook configuration for crawl events.",
+            "default": {}
+        },
+        {
+            "input_name": "scrape_options",
+            "type": "object",
+            "title": "Scrape Options",
+            "description": "Options for scraping content.",
+            "default": {}
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["url"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 
