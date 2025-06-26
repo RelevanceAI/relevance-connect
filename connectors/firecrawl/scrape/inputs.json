@@ -1,0 +1,23 @@
+{
+    "firecrawl": "your-test-api-key",
+    "url": "https://example.com",
+    "formats": ["markdown"],
+    "only_main_content": true,
+    "include_tags": [],
+    "exclude_tags": [],
+    "max_age": 0,
+    "headers": {},
+    "wait_for": 0,
+    "mobile": false,
+    "skip_tls_verification": false,
+    "timeout": 30000,
+    "parse_pdf": true,
+    "json_options": {},
+    "actions": [],
+    "location": {},
+    "remove_base64_images": true,
+    "block_ads": true,
+    "proxy": "basic",
+    "change_tracking_options": {},
+    "store_in_cache": true
+} 

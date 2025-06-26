@@ -1,0 +1,70 @@
+{
+    "name": "Firecrawl Map",
+    "description": "Map functionality for Firecrawl.",
+    "inputs": [
+        {
+            "input_name": "url",
+            "type": "string",
+            "title": "URL",
+            "description": "The URL of the website to map.",
+            "default": "https://www.firecrawl.dev"
+        },
+        {
+            "input_name": "search",
+            "type": "string",
+            "title": "Search",
+            "description": "Search parameter for mapping.",
+            "default": ""
+        },
+        {
+            "input_name": "ignore_sitemap",
+            "type": "boolean",
+            "title": "Ignore Sitemap",
+            "description": "Whether to ignore the sitemap.",
+            "default": true
+        },
+        {
+            "input_name": "sitemap_only",
+            "type": "boolean",
+            "title": "Sitemap Only",
+            "description": "Whether to map only the sitemap.",
+            "default": false
+        },
+        {
+            "input_name": "include_subdomains",
+            "type": "boolean",
+            "title": "Include Subdomains",
+            "description": "Whether to include subdomains in the map.",
+            "default": false
+        },
+        {
+            "input_name": "limit",
+            "type": "integer",
+            "title": "Limit",
+            "description": "Limit the number of pages to map.",
+            "default": 5000
+        },
+        {
+            "input_name": "timeout",
+            "type": "integer",
+            "title": "Timeout",
+            "description": "Timeout for the map request in milliseconds.",
+            "default": 10000
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["url"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 

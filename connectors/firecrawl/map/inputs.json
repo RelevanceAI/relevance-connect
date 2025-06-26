@@ -1,0 +1,10 @@
+{
+    "firecrawl": "your-test-api-key",
+    "url": "https://www.firecrawl.dev",
+    "search": "",
+    "ignore_sitemap": true,
+    "sitemap_only": false,
+    "include_subdomains": false,
+    "limit": 5000,
+    "timeout": 10000
+} 

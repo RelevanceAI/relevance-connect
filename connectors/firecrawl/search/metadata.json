@@ -1,0 +1,70 @@
+{
+    "name": "Firecrawl Search",
+    "description": "Search functionality for Firecrawl.",
+    "inputs": [
+        {
+            "input_name": "query",
+            "type": "string",
+            "title": "Search Query",
+            "description": "The search prompt or query to search for.",
+            "default": "Example search query"
+        },
+        {
+            "input_name": "limit",
+            "type": "integer",
+            "title": "Limit",
+            "description": "Limit the number of search results.",
+            "default": 100
+        },
+        {
+            "input_name": "tbs",
+            "type": "string",
+            "title": "Time Bound Search",
+            "description": "Time bound search parameter.",
+            "default": ""
+        },
+        {
+            "input_name": "location",
+            "type": "string",
+            "title": "Location",
+            "description": "Location for the search.",
+            "default": ""
+        },
+        {
+            "input_name": "timeout",
+            "type": "integer",
+            "title": "Timeout",
+            "description": "Timeout for the search request in milliseconds.",
+            "default": 60000
+        },
+        {
+            "input_name": "ignore_invalid_urls",
+            "type": "boolean",
+            "title": "Ignore Invalid URLs",
+            "description": "Whether to ignore invalid URLs.",
+            "default": false
+        },
+        {
+            "input_name": "scrape_options",
+            "type": "object",
+            "title": "Scrape Options",
+            "description": "Options for scraping content.",
+            "default": {}
+        },
+        {
+            "input_name": "firecrawl",
+            "type": "string",
+            "title": "Firecrawl API Key",
+            "description": "The API key for firecrawl.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        }
+    ],
+    "required": ["query"],
+    "requirements": ["firecrawl"],
+    "icon": "https://firecrawl.dev/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 300
+} 
