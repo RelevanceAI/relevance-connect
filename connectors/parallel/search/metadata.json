@@ -1,0 +1,65 @@
+{
+    "name": "Parallel Search",
+    "description": "Parallel Search allows you to run searches over the web using Parallel's intelligent search API. It returns ranked web URLs with compressed, relevant excerpts ready for agents to use.",
+    "inputs": [
+      {
+        "input_name": "parallel",
+        "type": "string",
+        "title": "Parallel API Key",
+        "description": "Your Parallel.ai API key for authenticating requests.",
+        "metadata": {
+          "content_type": "api_key",
+          "is_fixed_param": true
+        }
+      },
+      {
+        "input_name": "objective",
+        "type": "string",
+        "title": "Search Objective",
+        "description": "The overall objective or question you want to answer with the search.",
+        "default": "When was the United Nations established? Prefer UN's websites."
+      },
+      {
+        "input_name": "search_queries",
+        "type": "array",
+        "title": "Search Queries",
+        "description": "A list of search queries to run for fulfilling your objective.",
+        "default": [
+          "Founding year UN",
+          "Year of founding United Nations"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      {
+        "input_name": "processor",
+        "type": "string",
+        "title": "Processor Type",
+        "description": "Which search processor to use, e.g. 'base' for basic search.",
+        "default": "base"
+      },
+      {
+        "input_name": "max_results",
+        "type": "number",
+        "title": "Max Results",
+        "description": "Maximum number of search results to return.",
+        "default": 5,
+        "min": 1
+      },
+      {
+        "input_name": "max_chars_per_result",
+        "type": "number",
+        "title": "Max Characters Per Result",
+        "description": "Maximum number of characters per individual search result excerpt.",
+        "default": 1500,
+        "min": 1
+      }
+    ],
+    "required": ["parallel", "objective", "search_queries"],
+    "requirements": ["requests"],
+    "icon": "https://parallel.ai/favicon.ico",
+    "long_output_mode": false,
+    "timeout": 300
+  }
+  
