@@ -1,0 +1,25 @@
+{
+    "parallel": "your-api-key",
+    "input": "Research the current state of AI safety regulations in the United States. What are the key regulatory frameworks and recent developments?",
+    "output_schema": {
+        "type": "json",
+        "json_schema": {
+            "type": "object",
+            "properties": {
+                "summary": {
+                    "type": "string",
+                    "description": "A concise summary of the research findings"
+                },
+                "key_points": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Main points and insights discovered"
+                }
+            },
+            "required": ["summary", "key_points"]
+        }
+    },
+    "processor": "base"
+}

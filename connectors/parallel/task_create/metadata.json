@@ -1,0 +1,62 @@
+{
+    "name": "Task Create",
+    "description": "Create a new research task using Parallel.ai Task API. This integration starts a long-running web research task and returns a run_id that can be used to retrieve results later. Use 'Parallel Task Get Results' to retrieve the completed research.",
+    "inputs": [
+      {
+        "input_name": "parallel",
+        "type": "string",
+        "title": "Parallel API Key",
+        "description": "Your Parallel.ai API key for authenticating requests.",
+        "metadata": {
+          "content_type": "api_key",
+          "is_fixed_param": true
+        }
+      },
+      {
+        "input_name": "input",
+        "type": "string",
+        "title": "Research Task",
+        "description": "The research query or task description. Describe what information and insights you need from the internet.",
+        "default": "Research the latest developments in renewable energy technology in 2024."
+      },
+      {
+        "input_name": "output_schema",
+        "type": "object",
+        "title": "Output Schema (Optional)",
+        "description": "JSON schema defining the structure of the desired output. If not provided, the API will return unstructured text results. Use this to get organized, structured data.",
+        "default": {
+          "type": "json",
+          "json_schema": {
+            "type": "object",
+            "properties": {
+              "summary": {
+                "type": "string",
+                "description": "A concise summary of the research findings"
+              },
+              "key_points": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Main points and insights discovered"
+              }
+            },
+            "required": ["summary", "key_points"]
+          }
+        }
+      },
+      {
+        "input_name": "processor",
+        "type": "string",
+        "title": "Processor Type",
+        "description": "Which processor to use: 'lite' (fastest, basic research), 'base' (balanced speed/accuracy), 'core' (comprehensive analysis), 'pro' (advanced reasoning), or 'ultra' (maximum accuracy and depth).",
+        "default": "base",
+        "enum": ["lite", "base", "core", "pro", "ultra"]
+      }
+    ],
+    "required": ["parallel", "input", "processor"],
+    "requirements": ["requests"],
+    "icon": "https://parallel.ai/favicon.ico",
+    "long_output_mode": false,
+    "timeout": 60
+}
