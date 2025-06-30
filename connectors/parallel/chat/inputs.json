@@ -1,0 +1,12 @@
+{
+    "parallel": "your-api-key",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What are the latest developments in renewable energy technology in 2025?"
+        }
+    ],
+    "response_format": {
+        "type": "text"
+    }
+}

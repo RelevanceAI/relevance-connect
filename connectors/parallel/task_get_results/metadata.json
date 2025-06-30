@@ -1,0 +1,37 @@
+{
+    "name": "Task Get Results",
+    "description": "Retrieve results from a Parallel.ai research task using its run_id. Polls for task completion and returns research results with structured data and citations. Use after 'Task Create'.",
+    "inputs": [
+      {
+        "input_name": "parallel",
+        "type": "string",
+        "title": "Parallel API Key",
+        "description": "Your Parallel.ai API key for authenticating requests.",
+        "metadata": {
+          "content_type": "api_key",
+          "is_fixed_param": true
+        }
+      },
+      {
+        "input_name": "run_id",
+        "type": "string",
+        "title": "Task Run ID",
+        "description": "The run_id returned from 'Task Create'. This identifies the specific research task to retrieve results for.",
+        "default": "trun_01234567890abcdef1234567890abcdef"
+      },
+      {
+        "input_name": "timeout",
+        "type": "number",
+        "title": "Timeout (seconds)",
+        "description": "Maximum time to wait for task completion. Advanced processors may require up to 15 minutes.",
+        "default": 900,
+        "min": 60,
+        "max": 900
+      }
+    ],
+    "required": ["parallel", "run_id"],
+    "requirements": ["requests"],
+    "icon": "https://parallel.ai/favicon.ico",
+    "long_output_mode": true,
+    "timeout": 900
+} 
