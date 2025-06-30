@@ -1,0 +1,46 @@
+{
+    "name": "Parallel Chat",
+    "description": "Low-latency web research chat API powered by Parallel.ai. Get real-time web information through an OpenAI-compatible chat interface with 3-second median response time.",
+    "inputs": [
+        {
+            "input_name": "parallel",
+            "type": "string",
+            "title": "Parallel API Key",
+            "description": "Your Parallel.ai API key for authenticating requests.",
+            "metadata": {
+                "content_type": "api_key",
+                "is_fixed_param": true
+            }
+        },
+        {
+            "input_name": "messages",
+            "type": "array",
+            "title": "Chat Messages",
+            "description": "Array of message objects in OpenAI format. Each message should have 'role' and 'content' fields.",
+            "default": [
+                {
+                    "role": "user",
+                    "content": "What are the latest news about artificial intelligence?"
+                }
+            ]
+        },
+        {
+            "input_name": "response_format",
+            "type": "object",
+            "title": "Response Format",
+            "description": "Specify response format. Use {'type': 'text'} for plain text.",
+            "default": {"type": "text"}
+        },
+        {
+            "input_name": "stream",
+            "type": "boolean",
+            "title": "Stream Response",
+            "description": "Whether to stream the response. Currently only false is supported.",
+            "default": false
+        }
+    ],
+    "required": ["parallel", "messages"],
+    "requirements": ["openai"],
+    "icon": "https://parallel.ai/favicon.ico",
+    "timeout": 120
+}
