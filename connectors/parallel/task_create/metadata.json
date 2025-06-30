@@ -1,6 +1,6 @@
 {
-    "name": "Task Create",
-    "description": "Create a new research task using Parallel.ai Task API. This integration starts a long-running web research task and returns a run_id that can be used to retrieve results later. Use 'Parallel Task Get Results' to retrieve the completed research.",
+    "name": "Parallel Task Create",
+    "description": "Create a new research task using Parallel.ai Task API. This integration starts a web research task and returns a run_id that can be used to retrieve results later. Use 'Parallel Task Get Results' to retrieve the completed research.",
     "inputs": [
       {
         "input_name": "parallel",

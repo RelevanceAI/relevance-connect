@@ -1,6 +1,6 @@
 {
-    "name": "Task Get Results",
-    "description": "Retrieve the results of a previously created Parallel.ai research task using its run_id. This integration polls for task completion and returns the final research results with structured data and citations. Use after creating a task with 'Parallel Task Create'.",
+    "name": "Parallel Task Get Results",
+    "description": "Retrieve the results of a previously created Parallel.ai research task using its run_id. This integration polls for task completion and returns the final research results with structured data and citations. Use after creating a task with 'Task Create'.",
     "inputs": [
       {
         "input_name": "parallel",

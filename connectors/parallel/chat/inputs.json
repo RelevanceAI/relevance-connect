@@ -8,6 +8,5 @@
     ],
     "response_format": {
         "type": "text"
-    },
-    "stream": false
+    }
 }

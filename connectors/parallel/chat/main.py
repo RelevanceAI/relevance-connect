@@ -28,22 +28,18 @@ def validate_messages(messages):
 # Get and validate parameters
 messages = params["messages"]
 response_format = params.get("response_format", {"type": "text"})
-stream = params.get("stream", False)
 max_tokens = params.get("max_tokens")
 
 try:
     # Validate input
     validate_messages(messages)
     
-    # Make the API request using OpenAI client
-    if stream:
-        raise Exception("Streaming not yet implemented - set stream=false")
-    
+    # Make the API request using OpenAI client (streaming disabled - not compatible with Relevance Connect framework)
     response = client.chat.completions.create(
         model="speed",
         messages=messages,
         response_format=response_format if response_format.get("type") != "text" else None,
-        stream=stream
+        stream=False  # Always false - streaming not supported in this framework
     )
     
     result = response

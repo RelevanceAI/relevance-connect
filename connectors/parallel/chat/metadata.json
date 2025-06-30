@@ -30,14 +30,8 @@
             "title": "Response Format",
             "description": "Specify response format. Use {'type': 'text'} for plain text.",
             "default": {"type": "text"}
-        },
-        {
-            "input_name": "stream",
-            "type": "boolean",
-            "title": "Stream Response",
-            "description": "Whether to stream the response. Currently only false is supported.",
-            "default": false
         }
+
     ],
     "required": ["parallel", "messages"],
     "requirements": ["openai"],
