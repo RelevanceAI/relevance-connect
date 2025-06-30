@@ -1,6 +1,6 @@
 {
-    "name": "Parallel Task Get Results",
-    "description": "Retrieve the results of a previously created Parallel.ai research task using its run_id. This integration polls for task completion and returns the final research results with structured data and citations. Use after creating a task with 'Task Create'.",
+    "name": "Task Get Results",
+    "description": "Retrieve results from a Parallel.ai research task using its run_id. Polls for task completion and returns research results with structured data and citations. Use after 'Task Create'.",
     "inputs": [
       {
         "input_name": "parallel",
@@ -16,14 +16,14 @@
         "input_name": "run_id",
         "type": "string",
         "title": "Task Run ID",
-        "description": "The run_id returned from 'Parallel Task Create'. This identifies the specific research task to retrieve results for.",
-        "default": "trun_example123456789"
+        "description": "The run_id returned from 'Task Create'. This identifies the specific research task to retrieve results for.",
+        "default": "trun_01234567890abcdef1234567890abcdef"
       },
       {
         "input_name": "timeout",
         "type": "number",
         "title": "Timeout (seconds)",
-        "description": "Maximum time to wait for the task to complete in seconds. Pro and Ultra processors can take up to 15 minutes (900 seconds) to complete.",
+        "description": "Maximum time to wait for task completion. Advanced processors may require up to 15 minutes.",
         "default": 900,
         "min": 60,
         "max": 900

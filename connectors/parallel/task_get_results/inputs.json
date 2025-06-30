@@ -1,5 +1,5 @@
 {
-    "parallel": "your-api-key",
-    "run_id": "trun_b1e2b6a1e3d44583a2b6838ef4966f10",
-    "timeout": 300
+    "parallel": "your-parallel-api-key",
+    "run_id": "trun_54a472b57926432092cb2d52addee962",
+    "timeout": 900
 } 

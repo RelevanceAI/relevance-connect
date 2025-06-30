@@ -68,7 +68,7 @@ timeout = params.get("timeout", 300)
 if not run_id or not run_id.startswith("trun_"):
     return {
         "error": "Invalid run_id format",
-        "message": "run_id must start with 'trun_' and be obtained from 'Parallel Task Create'"
+        "message": "run_id must start with 'trun_' and be obtained from 'Task Create'"
     }
 
 # Check task status first to provide better feedback
